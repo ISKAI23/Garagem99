@@ -4,6 +4,7 @@
  */
 package br.gm.brunoriul.garage.controllers;
 
+import br.gm.brunoriul.garage.DTO.VeiculosMinDTO;
 import br.gm.brunoriul.garage.entities.Veiculos;
 import br.gm.brunoriul.garage.services.VeiculosService;
 import java.util.List;
@@ -25,14 +26,14 @@ public class GarageController {
     private VeiculosService garageService;
     
     @GetMapping("/forsale")
-    public List<Veiculos> findAll() {
-        List<Veiculos> result = garageService.findAll();
+    public List<VeiculosMinDTO> findAll() {
+        List<VeiculosMinDTO> result = garageService.findAll();
         return result;
     }
     
     @GetMapping("/forsale/{id}")
-    public ResponseEntity<Veiculos> findById(@PathVariable long id) {
-        Veiculos result = garageService.findById(id);
+    public ResponseEntity<VeiculosMinDTO> findById(@PathVariable long id) {
+        VeiculosMinDTO result = garageService.findById(id);
         
         if (result == null){
             return ResponseEntity.notFound().build();
@@ -45,8 +46,8 @@ public class GarageController {
     }
     
     @GetMapping("/year/{ano}")
-    public ResponseEntity<List<Veiculos>> findByAno(@PathVariable int ano) {
-        List<Veiculos> result = garageService.findByAno(ano);
+    public ResponseEntity<List<VeiculosMinDTO>> findByAno(@PathVariable int ano) {
+        List<VeiculosMinDTO> result = garageService.findByAno(ano);
         
         if (result == null){
             return ResponseEntity.notFound().build();

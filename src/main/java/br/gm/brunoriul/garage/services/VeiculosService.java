@@ -4,6 +4,7 @@
  */
 package br.gm.brunoriul.garage.services;
 
+import br.gm.brunoriul.garage.DTO.VeiculosMinDTO;
 import br.gm.brunoriul.garage.entities.Veiculos;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,22 +22,25 @@ public class VeiculosService {
     @Autowired
     private VeiculosRepository garageRepository;
     
-    public List<Veiculos> findAll() {
+    public List<VeiculosMinDTO> findAll() {
         
         List<Veiculos> result = garageRepository.findAll();
-        return result;
+        List<VeiculosMinDTO> resultDTO = result.stream().map(x -> new VeiculosMinDTO(x)).toList();
+        return resultDTO;
     }
     
-   public Veiculos findById(long id) {
+   public VeiculosMinDTO findById(long id) {
         
         Veiculos result = garageRepository.findById(id);
-        return result;
+        VeiculosMinDTO resultDTO = new VeiculosMinDTO(result);
+        return resultDTO;
     }
    
-   public List<Veiculos> findByAno(int ano) {
+   public List<VeiculosMinDTO> findByAno(int ano) {
         
         List<Veiculos> result = garageRepository.findByAno(ano);
-        return result;
+        List<VeiculosMinDTO> resultDTO = result.stream().map(x -> new VeiculosMinDTO(x)).toList();
+        return resultDTO;
     }
    
    public List<Veiculos> findByCor(String cor) {

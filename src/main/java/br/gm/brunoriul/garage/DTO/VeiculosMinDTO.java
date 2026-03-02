@@ -22,11 +22,7 @@ public class VeiculosMinDTO {
     private int km;
 
     private String linkImagem;
-   
-    private String descricaoCompleta;
-    
-    private String avarias;
-
+  
     public VeiculosMinDTO() {
     }
 
@@ -37,8 +33,6 @@ public class VeiculosMinDTO {
         this.ano = veiculos.getAno();
         this.km = veiculos.getKm();
         this.linkImagem = veiculos.getLinkImagem();
-        this.descricaoCompleta = veiculos.getDescricaoCompleta();
-        this.avarias = veiculos.getAvarias();
     }
 
     public String getMarca() {
@@ -64,13 +58,4 @@ public class VeiculosMinDTO {
     public String getLinkImagem() {
         return linkImagem;
     }
-
-    public String getDescricaoCompleta() {
-        return descricaoCompleta;
-    }
-
-    public String getAvarias() {
-        return avarias;
-    }
-
 }
