@@ -44,5 +44,11 @@ public class GarageController {
         
     }
     
+    @GetMapping("/color/{cor}")
+    public List<Veiculos> findByCor(@PathVariable String cor) {
+        List<Veiculos> result = garageService.findByCor(cor);
+        return result;
+    }
+    
     
 }

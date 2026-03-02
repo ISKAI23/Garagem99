@@ -32,4 +32,9 @@ public class GarageService {
         Veiculos result = garageRepository.findById(id);
         return result;
     }
+   
+   public List<Veiculos> findByCor(String cor) {
+        List<Veiculos> result = garageRepository.findByCor(cor);
+        return result;
+    }
 }
