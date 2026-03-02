@@ -5,10 +5,10 @@
 package br.gm.brunoriul.garage.services;
 
 import br.gm.brunoriul.garage.entities.Veiculos;
-import br.gm.brunoriul.garage.repositories.GarageRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import br.gm.brunoriul.garage.repositories.VeiculosRepository;
 
 /**
  *
@@ -16,10 +16,10 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class GarageService {
+public class VeiculosService {
     
     @Autowired
-    private GarageRepository garageRepository;
+    private VeiculosRepository garageRepository;
     
     public List<Veiculos> findAll() {
         
@@ -30,6 +30,12 @@ public class GarageService {
    public Veiculos findById(long id) {
         
         Veiculos result = garageRepository.findById(id);
+        return result;
+    }
+   
+   public List<Veiculos> findByAno(int ano) {
+        
+        List<Veiculos> result = garageRepository.findByAno(ano);
         return result;
     }
    

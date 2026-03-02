@@ -12,9 +12,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author digma
  */
-public interface GarageRepository extends JpaRepository<Veiculos, Long>{
+public interface VeiculosRepository extends JpaRepository<Veiculos, Long>{
     
     Veiculos findById(long id);
+    
+    List<Veiculos> findByAno(int ano);
     
     List<Veiculos> findByCor(String cor);  
 }

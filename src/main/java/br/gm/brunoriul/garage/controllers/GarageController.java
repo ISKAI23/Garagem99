@@ -5,7 +5,7 @@
 package br.gm.brunoriul.garage.controllers;
 
 import br.gm.brunoriul.garage.entities.Veiculos;
-import br.gm.brunoriul.garage.services.GarageService;
+import br.gm.brunoriul.garage.services.VeiculosService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class GarageController {
     
     @Autowired
-    private GarageService garageService;
+    private VeiculosService garageService;
     
     @GetMapping("/forsale")
     public List<Veiculos> findAll() {
@@ -43,6 +43,20 @@ public class GarageController {
         }
         
     }
+    
+    @GetMapping("/year/{ano}")
+    public ResponseEntity<List<Veiculos>> findByAno(@PathVariable int ano) {
+        List<Veiculos> result = garageService.findByAno(ano);
+        
+        if (result == null){
+            return ResponseEntity.notFound().build();
+        }
+        
+        else {
+            return ResponseEntity.ok(result);
+        }
+        
+    }    
     
     @GetMapping("/color/{cor}")
     public List<Veiculos> findByCor(@PathVariable String cor) {
